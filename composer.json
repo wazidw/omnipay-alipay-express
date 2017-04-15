@@ -1,0 +1,36 @@
+{
+  "name": "wazidw/omnipay-express",
+  "type": "library",
+  "description": "Alipay gateway for Omnipay payment processing library",
+  "keywords": [
+    "alipay",
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment",
+    "purchase"
+  ],
+  "homepage": "https://github.com/wazidw/omnipay-alipay-express.git",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "wazidw",
+      "email": "wazidw@foxmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\AlipayExpress\\": "src/",
+    },
+    "files": [
+      "src/Common/helpers.php"
+    ]
+  },
+  "require": {
+    "omnipay/common": "~2.0"
+  },
+  "require-dev": {
+    "omnipay/tests": "~2.0"
+  }
+}
