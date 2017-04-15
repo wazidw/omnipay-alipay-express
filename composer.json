@@ -21,7 +21,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Omnipay\\AlipayExpress\\": "src/",
+      "Omnipay\\AlipayExpress\\": "src/"
     },
     "files": [
       "src/Common/helpers.php"
