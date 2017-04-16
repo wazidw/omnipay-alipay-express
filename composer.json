@@ -22,10 +22,7 @@
   "autoload": {
     "psr-4": {
       "Omnipay\\AlipayExpress\\": "src/"
-    },
-    "files": [
-      "src/Common/helpers.php"
-    ]
+    }
   },
   "require": {
     "omnipay/common": "~2.0"
