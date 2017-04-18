@@ -2,14 +2,14 @@
 
 namespace Omnipay\AlipayExpress;
 
-// use Omnipay\AlipayExpress\Requests\LegacyCloseTradePurchaseRequest;
+use Omnipay\AlipayExpress\Requests\LegacyCloseTradePurchaseRequest;
 use Omnipay\Common\AbstractGateway;
 
 /**
  * Class LegacyCloseTradeGateway
  * @package  Omnipay\AlipayExpress
  */
-class LegacyCloseTradeGateway extends AbstractGateway
+class LegacyCloseTradeGateway extends AbstractLegacyGateway
 {
 
     /**

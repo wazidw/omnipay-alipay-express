@@ -4,6 +4,7 @@ namespace Omnipay\AlipayExpress\Requests;
 
 use Omnipay\AlipayExpress\Responses\LegacyCloseTradePurchaseResponse;
 use Omnipay\Common\Message\ResponseInterface;
+use Omnipay\Alipay\Requests\AbstractLegacyRequest;
 
 /**
  * Class LegacyCloseTradePurchaseRequest
@@ -14,10 +15,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
 {
 
     protected $service = 'close_trade';
-
-    protected $key;
-
-    protected $privateKey;
 
 
     /**
@@ -30,10 +27,14 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
     {
         $this->validateParams();
 
-        $data = $this->filter($this->parameters->all());
-
-        $data['service']   = $this->service;
-        $data['sign']      = $this->sign($data, $this->getSignType());
+        $data = [
+            'service'        => $this->service,
+            'partner'        => $this->getPartner(),
+            'trade_no'       => $this->getTradeNo(),
+            'out_order_no'   => $this->getOutOrderNo(),
+            '_input_charset' => $this->getInputCharset()
+        ];
+        $data['sign'] = $this->sign($data, $this->getSignType());
         $data['sign_type'] = $this->getSignType();
 
         return $data;
@@ -45,8 +46,12 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         $this->validate(
             'partner',
             '_input_charset',
-            'sign',
             'sign_type'
+        );
+
+        $this->validateOne(
+            'trade_no',
+            'out_order_no'
         );
     }
 
@@ -69,6 +74,12 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
      */
     public function sendData($data)
     {
+        $url = sprintf('%s?%', $this->getEndpoint(), '_input_charset='.$this->getInputCharset());
+        $request = $this->httpClient->post($url, null, $data);
+        $responseData = $request->send()->getBody(true);
+        $xml  = simplexml_load_string($responseData);
+        $json = json_encode($xml);
+        $data = json_decode($json, true);
         return $this->response = new LegacyCloseTradePurchaseResponse($this, $data);
     }
 
@@ -92,6 +103,23 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         return $this->setParameter('partner', $value);
     }
 
+    /**
+     * @return mixed
+     */
+    public function getKey()
+    {
+        return $this->getParameter('key');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setKey($value)
+    {
+        return $this->setParameter('key', $value);
+    }
 
     /**
      * @return mixed
@@ -109,7 +137,7 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
      */
     public function setInputCharset($value)
     {
-        return $this->setParameter('_input_charset', $value);
+        return $this->setParameter('_input_charset', strtolower($value));
     }
 
 
@@ -145,9 +173,9 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
     /**
      * @return mixed
      */
-    public function getOutTradeNo()
+    public function getOutOrderNo()
     {
-        return $this->getParameter('out_trade_no');
+        return $this->getParameter('out_order_no');
     }
 
 
@@ -156,9 +184,9 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
      *
      * @return $this
      */
-    public function setOutTradeNo($value)
+    public function setOutOrderNo($value)
     {
-        return $this->setParameter('out_trade_no', $value);
+        return $this->setParameter('out_order_no', $value);
     }
 
 

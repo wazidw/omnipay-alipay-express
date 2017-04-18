@@ -3,9 +3,10 @@
 namespace Omnipay\AlipayExpress\Responses;
 
 use Omnipay\AlipayExpress\Requests\LegacyCloseTradePurchaseRequest;
-use Omnipay\Common\Message\RedirectResponseInterface;
+use Omnipay\Common\Message\AbstractResponse;
+use Omnipay\Alipay\Responses\AbstractLegacyResponse;
 
-class LegacyCloseTradePurchaseResponse extends AbstractLegacyResponse implements RedirectResponseInterface
+class LegacyCloseTradePurchaseResponse extends AbstractResponse
 {
 
     /**
