@@ -22,7 +22,6 @@ class LegacyCloseTradeGateway extends AbstractLegacyGateway
         return 'AlipayExpress Legacy CloseTrade Gateway';
     }
 
-
     /**
      * @param array $parameters
      *

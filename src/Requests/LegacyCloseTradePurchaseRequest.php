@@ -16,7 +16,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
 
     protected $service = 'close_trade';
 
-
     /**
      * Get the raw data array for this message. The format of this varies from gateway to
      * gateway, but will usually be either an associative array, or a SimpleXMLElement.
@@ -40,7 +39,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         return $data;
     }
 
-
     protected function validateParams()
     {
         $this->validate(
@@ -54,7 +52,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
             'out_order_no'
         );
     }
-
 
     /**
      * @return mixed
@@ -82,7 +79,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         $data = json_decode($json, true);
         return $this->response = new LegacyCloseTradePurchaseResponse($this, $data);
     }
-
 
     /**
      * @return mixed
@@ -129,7 +125,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         return $this->getParameter('_input_charset');
     }
 
-
     /**
      * @param $value
      *
@@ -139,7 +134,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
     {
         return $this->setParameter('_input_charset', strtolower($value));
     }
-
 
     /**
      * @param $value
@@ -159,7 +153,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         return $this->getParameter('trade_no');
     }
 
-
     /**
      * @param $value
      *
@@ -178,7 +171,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         return $this->getParameter('out_order_no');
     }
 
-
     /**
      * @param $value
      *
@@ -189,7 +181,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
         return $this->setParameter('out_order_no', $value);
     }
 
-
     /**
      * @return mixed
      */
@@ -197,7 +188,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
     {
         return $this->getParameter('total_fee');
     }
-
 
     /**
      * @param $value
@@ -208,7 +198,6 @@ class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
     {
         return $this->setParameter('total_fee', $value);
     }
-
 
     /**
      * @return mixed

@@ -2,19 +2,10 @@
 
 namespace Omnipay\AlipayExpress\Responses;
 
-use Omnipay\AlipayExpress\Requests\LegacyCloseTradePurchaseRequest;
 use Omnipay\Common\Message\AbstractResponse;
-use Omnipay\Alipay\Responses\AbstractLegacyResponse;
 
 class LegacyCloseTradePurchaseResponse extends AbstractResponse
 {
-
-    /**
-     * @var LegacyCloseTradePurchaseRequest
-     */
-    protected $request;
-
-
     /**
      * Is the response successful?
      *
@@ -22,21 +13,13 @@ class LegacyCloseTradePurchaseResponse extends AbstractResponse
      */
     public function isSuccessful()
     {
-        return true;
+        return $this->data['is_success'] === 'T';
     }
 
-
-    public function isRedirect()
+    public function getError()
     {
-        return true;
+        return $this->data['error'];
     }
-
-
-    public function getRedirectUrl()
-    {
-        return $this->request->getEndpoint() . '?' . http_build_query($this->getRedirectData());
-    }
-
 
     /**
      * Gets the redirect form data array, if the redirect method is POST.
@@ -45,7 +28,6 @@ class LegacyCloseTradePurchaseResponse extends AbstractResponse
     {
         return $this->data;
     }
-
 
     /**
      * Get the required redirect method (either GET or POST).

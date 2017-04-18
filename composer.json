@@ -1,11 +1,10 @@
 {
   "name": "wazidw/omnipay-express",
   "type": "library",
-  "description": "Alipay gateway for Omnipay payment processing library",
+  "description": "Alipay Express gateway for Omnipay payment processing library",
   "keywords": [
     "alipay",
     "gateway",
-    "merchant",
     "omnipay",
     "pay",
     "payment",
@@ -25,7 +24,8 @@
     }
   },
   "require": {
-    "omnipay/common": "~2.0"
+    "omnipay/common": "~2.0",
+    "lokielse/omnipay-alipay": "dev-master"
   },
   "require-dev": {
     "omnipay/tests": "~2.0"
