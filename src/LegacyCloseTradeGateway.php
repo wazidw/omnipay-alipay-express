@@ -8,6 +8,7 @@ use Omnipay\Common\AbstractGateway;
 /**
  * Class LegacyCloseTradeGateway
  * @package  Omnipay\AlipayExpress
+ * @link http://aopsdkdownload.cn-hangzhou.alipay-pub.aliyun-inc.com/demo/alipayclosetrade.zip
  */
 class LegacyCloseTradeGateway extends AbstractLegacyGateway
 {

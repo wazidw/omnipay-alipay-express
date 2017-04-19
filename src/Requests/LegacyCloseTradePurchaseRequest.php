@@ -9,7 +9,7 @@ use Omnipay\Alipay\Requests\AbstractLegacyRequest;
 /**
  * Class LegacyCloseTradePurchaseRequest
  * @package   Omnipay\AlipayExpress\Requests
- *
+ * @link http://aopsdkdownload.cn-hangzhou.alipay-pub.aliyun-inc.com/demo/alipayclosetrade.zip
  */
 class LegacyCloseTradePurchaseRequest extends AbstractLegacyRequest
 {
