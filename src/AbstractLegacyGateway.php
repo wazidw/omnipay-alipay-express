@@ -12,7 +12,7 @@ abstract class AbstractLegacyGateway extends AbstractGateway
         return [
             'inputCharset' => 'UTF-8',
             'signType'     => 'MD5',
-            'alipaySdk'    => 'wazidw/omnipay-alipay-express',
+            // 'alipaySdk'    => 'wazidw/omnipay-alipay-express',
         ];
     }
 
