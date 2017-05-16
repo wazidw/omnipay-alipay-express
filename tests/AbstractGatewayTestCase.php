@@ -11,6 +11,8 @@ abstract class AbstractGatewayTestCase extends GatewayTestCase
 
     protected $key = ALIPAY_KEY;
 
+    protected $sellerId = ALIPAY_SELLER_ID;
+
     protected function setUp()
     {
         parent::setUp();

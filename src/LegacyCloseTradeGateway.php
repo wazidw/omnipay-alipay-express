@@ -2,6 +2,7 @@
 
 namespace Omnipay\AlipayExpress;
 
+use Omnipay\AlipayExpress\AbstractLegacyGateway;
 use Omnipay\AlipayExpress\Requests\LegacyCloseTradePurchaseRequest;
 use Omnipay\Common\AbstractGateway;
 

@@ -2,9 +2,11 @@
 
 namespace Omnipay\AlipayExpress;
 
-use Omnipay\Common\AbstractGateway;
+use Omnipay\Alipay\AbstractLegacyGateway as AlipayAbstractLegacyGateway;
+use Omnipay\AlipayExpress\Requests\LegacyRefundNoPwdRequest;
+use Omnipay\AlipayExpress\Requests\LegacyCompleteRefundNoPwdRequest;
 
-abstract class AbstractLegacyGateway extends AbstractGateway
+abstract class AbstractLegacyGateway extends AlipayAbstractLegacyGateway
 {
 
     public function getDefaultParameters()
@@ -12,83 +14,8 @@ abstract class AbstractLegacyGateway extends AbstractGateway
         return [
             'inputCharset' => 'UTF-8',
             'signType'     => 'MD5',
-            // 'alipaySdk'    => 'wazidw/omnipay-alipay-express',
+            'alipaySdk'    => 'wazidw/omnipay-alipay-express',
         ];
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getPartner()
-    {
-        return $this->getParameter('partner');
-    }
-
-
-    /**
-     * @param $value
-     *
-     * @return $this
-     */
-    public function setPartner($value)
-    {
-        return $this->setParameter('partner', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSignType()
-    {
-        return $this->getParameter('sign_type');
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getKey()
-    {
-        return $this->getParameter('key');
-    }
-
-
-    /**
-     * @param $value
-     *
-     * @return $this
-     */
-    public function setKey($value)
-    {
-        return $this->setParameter('key', $value);
-    }
-
-    /**
-     * @param $value
-     *
-     * @return $this
-     */
-    public function setSignType($value)
-    {
-        return $this->setParameter('sign_type', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInputCharset()
-    {
-        return $this->getParameter('_input_charset');
-    }
-
-    /**
-     * @param $value
-     *
-     * @return $this
-     */
-    public function setInputCharset($value)
-    {
-        return $this->setParameter('_input_charset', $value);
     }
 
     /**
@@ -128,4 +55,23 @@ abstract class AbstractLegacyGateway extends AbstractGateway
         return $this->setParameter('out_order_no', $value);
     }
 
+    /**
+     * @param array $parameters
+     *
+     * @return LegacyRefundRequest
+     */
+    public function refundNoPwd(array $parameters = [])
+    {
+        return $this->createRequest(LegacyRefundNoPwdRequest::class, $parameters);
+    }
+
+        /**
+     * @param array $parameters
+     *
+     * @return LegacyRefundRequest
+     */
+    public function completeRefundNoPwd(array $parameters = [])
+    {
+        return $this->createRequest(LegacyCompleteRefundNoPwdRequest::class, $parameters);
+    }
 }
